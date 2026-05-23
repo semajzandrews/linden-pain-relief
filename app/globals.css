@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+/* Linden Pain Relief · Japanese minimalist medicine + ink-and-seal */
+@theme {
+  --color-paper:     #FAF7F0;
+  --color-paper-2:   #EEE8D6;
+  --color-ink:       #15140F;
+  --color-ink-2:     #36322A;
+  --color-ink-soft:  #6A6354;
+  --color-jade:      #4B7A5A;
+  --color-jade-2:    #2F5D40;
+  --color-seal:      #C73C26;     /* single red seal accent */
+  --color-rule:      #D8CFB7;
+  --color-rule-2:    #A6997A;
+
+  --font-display: "Cormorant Garamond", Georgia, ui-serif, serif;
+  --font-body:    "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  :root {
+    --paper:#FAF7F0; --paper-2:#EEE8D6;
+    --ink:#15140F; --ink-2:#36322A; --ink-soft:#6A6354;
+    --jade:#4B7A5A; --jade-2:#2F5D40;
+    --seal:#C73C26;
+    --rule:#D8CFB7; --rule-2:#A6997A;
+  }
+  html, body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--seal); color: var(--paper); }
+}
+
+/* Brush stroke under text */
+.brush-under {
+  background-image: linear-gradient(transparent 65%, rgba(199,60,38,0.25) 65%, rgba(199,60,38,0.25) 95%, transparent 95%);
+}
+
+/* Vertical writing column accent */
+.vertical-tate {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* Red seal stamp */
+.seal {
+  background: var(--seal);
+  color: var(--paper);
+  font-family: var(--font-display);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px; height: 64px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.4);
+  transform: rotate(-4deg);
+}
+
+@keyframes float-tiny {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-3px); }
+}
+.float-tiny { animation: float-tiny 4s ease-in-out infinite; }
+
+.tabnum { font-variant-numeric: tabular-nums; }
+.font-display { font-family: var(--font-display); font-weight: 500; }
+.font-mono { font-family: var(--font-mono); }
