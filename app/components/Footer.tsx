@@ -11,7 +11,7 @@ export default function Footer() {
           Orange NJ. By appointment.
         </p>
         <div className="mt-10 text-[10px] uppercase tracking-[0.32em] text-paper/50">
-          © {new Date().getFullYear()} · Linden Pain Relief · Orange, NJ · built · bysemaj.com
+          © {new Date().getFullYear()} · Linden Pain Relief · Orange, NJ · <a href="https://bysemaj.com" target="_blank" rel="noreferrer" className="underline-offset-4 hover:underline transition-opacity hover:opacity-80">built · bysemaj.com</a>
         </div>
       </div>
     </footer>
