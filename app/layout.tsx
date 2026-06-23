@@ -1,22 +1,39 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter, JetBrains_Mono } from "next/font/google";
 import SmoothScroll from "./components/SmoothScroll";
 import "./globals.css";
 
-const display = Cormorant_Garamond({ variable: "--font-display", subsets: ["latin"], weight: ["400","500","600"], style: ["normal","italic"] });
-const body = Inter({ variable: "--font-body", subsets: ["latin"] });
-const mono = JetBrains_Mono({ variable: "--font-mono", subsets: ["latin"] });
-
 export const metadata: Metadata = {
-  title: "Linden Pain Relief — Chiropractic + recovery, Orange NJ",
-  description: "Chiropractic care, posture work, and quiet recovery on Linden Ave, Orange NJ. By appointment.",
-  openGraph: { title: "Linden Pain Relief · Orange NJ", description: "Chiropractic + recovery.", type: "website" },
+  metadataBase: new URL("https://linden-pain-relief.vercel.app"),
+  title: "Linden Pain Relief Health Center · Chiropractic in Orange, NJ",
+  description:
+    "Dr. Kesnold Baptiste, DC. Chiropractic adjustment, recovery, and pain relief for the neck, back, shoulders, hips, and sports injuries on Main Street in Orange, NJ. English, Spanish, Português, and Kreyòl Ayisyen.",
+  openGraph: {
+    title: "Linden Pain Relief Health Center · Orange, NJ",
+    description:
+      "Chiropractic care and recovery with Dr. Kesnold Baptiste. We listen first, then find where the pain actually started.",
+    type: "website",
+    locale: "en_US",
+  },
 };
+
+// Arm reveals only when the page is actually visible; force-reveal after 2.5s no matter what.
+const armScript = `
+(function(){
+  try{
+    var d=document.documentElement;
+    function arm(){ if(document.visibilityState!=='hidden'){ d.classList.add('reveal-armed'); } }
+    arm(); document.addEventListener('visibilitychange', arm, {once:true});
+    setTimeout(function(){ d.classList.add('reveal-done'); }, 2500);
+  }catch(e){}
+})();`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable} antialiased`}>
-      <body className="bg-paper text-ink min-h-screen">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: armScript }} />
+      </head>
+      <body>
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
