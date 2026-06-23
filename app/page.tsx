@@ -1,7 +1,9 @@
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import Care from "./components/Care";
-import Treatments from "./components/Treatments";
+import BodyMap from "./components/BodyMap";
+import Method from "./components/Method";
+import Doctor from "./components/Doctor";
 import Visit from "./components/Visit";
 import Footer from "./components/Footer";
 
@@ -12,7 +14,9 @@ export default function Page() {
       <main>
         <Hero />
         <Care />
-        <Treatments />
+        <BodyMap />
+        <Method />
+        <Doctor />
         <Visit />
       </main>
       <Footer />
