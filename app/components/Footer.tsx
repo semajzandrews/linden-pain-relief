@@ -54,7 +54,7 @@ export default function Footer() {
             © {new Date().getFullYear()} {SITE.name} · {SITE.city}, NJ
           </span>
           <span className="flex items-center gap-1.5">
-            Built by
+            built
             <a
               href="https://bysemaj.com"
               target="_blank"
